@@ -1,0 +1,13 @@
+# Moldflow
+*.rfn
+*.err
+*.out
+*.lci
+*.lck
+
+# Data files
+*.mpi
+*.sdy
+*.stl
+*.json
+*.png
