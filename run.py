@@ -20,6 +20,13 @@ config = yaml.safe_load(yaml_file)
 # Path to Autodesk Moldflow
 MF = os.path.join("C:/", "Program Files", "Autodesk", "Moldflow Insight 2021", "bin")
 
+# Define outputs
+OUT = {
+    "1610": "fill_time",
+    "1653": "weld_surface",
+    "1722": "weld_line",
+}
+
 for name, props in config.items():
     # Print current model name
     print(f"Running model '{name}'.")
@@ -97,19 +104,20 @@ for name, props in config.items():
         with open(os.path.join(path, study_name + ".log"), "w") as file:
             file.write(output.decode("windows-1252").strip())
 
-        p = subprocess.Popen(
-            [
-                os.path.join(MF, "studyrlt.exe"),
-                study_name + ".sdy",
-                "-xml",
-                "1610",
-                "-output",
-                "fill_time.xml",
-            ],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            cwd=path,
-        )
-        (output, err) = p.communicate()
+        for key, value in OUT.items():
+            p = subprocess.Popen(
+                [
+                    os.path.join(MF, "studyrlt.exe"),
+                    study_name + ".sdy",
+                    "-xml",
+                    key,
+                ],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                cwd=path,
+            )
+            (output, err) = p.communicate()
+            name = os.path.join(path, f"{study_name}.xml")
+            os.rename(name, name.replace(".xml", f"_{value}.xml"))
 
         print("          ...done.")
