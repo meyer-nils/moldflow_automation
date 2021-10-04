@@ -33,15 +33,15 @@ python run.py
 ```
 
 This generates a directory for each model named *model* in the *data* directory. The directory contains
-- ** *model*.stl:** CAD model.
-- ** *model*\_*X*\_*Y*\_study.log:** Simulation log file.
-- ** *model*\_*X*\_*Y*\_study.pat:** Mesh in Patran format.
-- ** *model*\_*X*\_*Y*\_study.png:** Preview image.
-- ** *model*\_*X*\_*Y*\_study.sdy:** Moldflow study file setting up the simulation case.
-- ** *model*\_*X*\_*Y*\_study.of1:** Binary filling results except weld lines and air traps.
-- ** *model*\_*X*\_*Y*\_study.of2:** Binary weld lines and air trap results.
-- ** *model*\_*X*\_*Y*\_study_fill_time.xml:** Fill time of each node.
-- ** *model*\_*X*\_*Y*\_study_weld_surface.xml:** Nodes of the weld surface.
-- ** *model*\_*X*\_*Y*\_study_weld_line.xml:** Nodes of the weld line.
+- *model*.stl: CAD model.
+- *model*\_*X*\_*Y*\_study.log: Simulation log file.
+- *model*\_*X*\_*Y*\_study.pat: Mesh in Patran format.
+- *model*\_*X*\_*Y*\_study.png: Preview image.
+- *model*\_*X*\_*Y*\_study.sdy: Moldflow study file setting up the simulation case.
+- *model*\_*X*\_*Y*\_study.of1: Binary filling results except weld lines and air traps.
+- *model*\_*X*\_*Y*\_study.of2: Binary weld lines and air trap results.
+- *model*\_*X*\_*Y*\_study_fill_time.xml: Fill time of each node.
+- *model*\_*X*\_*Y*\_study_weld_surface.xml: Nodes of the weld surface.
+- *model*\_*X*\_*Y*\_study_weld_line.xml: Nodes of the weld line.
 
 for each pair of injection locations (*X*, *Y*).
