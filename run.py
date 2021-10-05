@@ -14,7 +14,7 @@ import yaml
 import geometry
 
 # Load the configuration file
-yaml_file = open("models.yaml", "r")
+yaml_file = open("random_models.yaml", "r")
 config = yaml.safe_load(yaml_file)
 
 # Path to Autodesk Moldflow
