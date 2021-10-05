@@ -117,7 +117,7 @@ for name, props in config.items():
                 cwd=path,
             )
             (output, err) = p.communicate()
-            name = os.path.join(path, f"{study_name}.xml")
-            os.rename(name, name.replace(".xml", f"_{value}.xml"))
+            temp_name = os.path.join(path, f"{study_name}.xml")
+            os.rename(temp_name, temp_name.replace(".xml", f"_{value}.xml"))
 
         print("          ...done.")
