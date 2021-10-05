@@ -34,6 +34,7 @@ python run.py
 
 This generates a directory for each model named *model* in the *data* directory. The directory contains
 - *model*.stl: CAD model.
+- *model*.mpi: Moldflow project definition.
 - *model*\_*X*\_*Y*\_study.log: Simulation log file.
 - *model*\_*X*\_*Y*\_study.pat: Mesh in Patran format.
 - *model*\_*X*\_*Y*\_study.png: Preview image.
