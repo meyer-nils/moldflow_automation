@@ -18,7 +18,7 @@ yaml_file = open("random_models.yaml", "r")
 config = yaml.safe_load(yaml_file)
 
 # Path to Autodesk Moldflow
-MF = os.path.join("C:/", "Program Files", "Autodesk", "Moldflow Insight 2021", "bin")
+MF = os.path.join("C:/", "Program Files", "Autodesk", "Moldflow Insight 2021.1", "bin")
 
 # Define outputs
 OUT = {
