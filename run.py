@@ -82,6 +82,14 @@ for name, props in config.items():
         MeshGenerator.EdgeLength = 2.5
         MeshGenerator.Generate
 
+        # Set number of intermediate results
+        PropEd = Synergy.PropertyEditor
+        Prop = PropEd.FindProperty(10080, 1)
+        DVec = Synergy.CreateDoubleArray
+        DVec.AddDouble(50)
+        Prop.FieldValues(910, DVec)
+        PropEd.CommitChanges("Process Conditions")
+
         # Save the sdy files
         StudyDoc = Synergy.StudyDoc
         StudyDoc.Save
@@ -92,10 +100,7 @@ for name, props in config.items():
 
         # Run the simulation
         p = subprocess.Popen(
-            [
-                os.path.join(MF, "runstudy.exe"),
-                study_name + ".sdy",
-            ],
+            [os.path.join(MF, "runstudy.exe"), study_name + ".sdy",],
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
             cwd=path,
@@ -106,12 +111,7 @@ for name, props in config.items():
 
         for key, value in OUT.items():
             p = subprocess.Popen(
-                [
-                    os.path.join(MF, "studyrlt.exe"),
-                    study_name + ".sdy",
-                    "-xml",
-                    key,
-                ],
+                [os.path.join(MF, "studyrlt.exe"), study_name + ".sdy", "-xml", key,],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
                 cwd=path,
