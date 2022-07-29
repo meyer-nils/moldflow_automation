@@ -23,8 +23,10 @@ MF = os.path.join("C:/", "Program Files", "Autodesk", "Moldflow Insight 2021.1",
 # Define outputs
 OUT = {
     "1610": "fill_time",
-    "1653": "weld_surface",
-    "1722": "weld_line",
+    "1540": "temperature",
+    "1180": "pressure",
+    "1750": "velocity",
+    "1650": "polymer_fill",
 }
 
 for name, props in config.items():
