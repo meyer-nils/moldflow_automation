@@ -10,7 +10,8 @@ M = 5
 # Create uniformly distributed random data
 x_plate = np.random.randint(20, 100, N)
 y_plate = np.random.randint(20, 100, N)
-n_hole = np.random.randint(0, 3, N)
+# n_hole = np.random.randint(0, 3, N)
+n_hole = np.ones_like(x_plate)
 flow_rate = np.random.randint(1, 100, N)
 
 models = {}
