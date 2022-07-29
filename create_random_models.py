@@ -1,6 +1,6 @@
 """Create a configuration file with several random models."""
-import yaml
 import numpy as np
+import yaml
 
 # Number of models
 N = 10
@@ -11,10 +11,11 @@ M = 5
 x_plate = np.random.randint(20, 100, N)
 y_plate = np.random.randint(20, 100, N)
 n_hole = np.random.randint(0, 3, N)
+flow_rate = np.random.randint(1, 100, N)
 
 models = {}
 
-for i, (x, y, n) in enumerate(zip(x_plate, y_plate, n_hole)):
+for i, (x, y, n, fr) in enumerate(zip(x_plate, y_plate, n_hole, flow_rate)):
     # Holes should be in the plates
     x_holes = np.random.randint(9, x - 9, n)
     y_holes = np.random.randint(9, y - 9, n)
@@ -35,6 +36,7 @@ for i, (x, y, n) in enumerate(zip(x_plate, y_plate, n_hole)):
     # build dictionary for YAML
     models[f"plate_{i}"] = {
         "thickness": 3.0,
+        "flow_rate": float(fr),
         "plate": [float(x), float(y)],
         "holes": holes,
         "injection_locations": injections,

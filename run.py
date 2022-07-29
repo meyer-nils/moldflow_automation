@@ -14,7 +14,7 @@ import yaml
 import geometry
 
 # Load the configuration file
-yaml_file = open("random_models.yaml", "r")
+yaml_file = open("models.yaml", "r")
 config = yaml.safe_load(yaml_file)
 
 # Path to Autodesk Moldflow
@@ -92,6 +92,36 @@ for name, props in config.items():
         Prop.FieldValues(910, DVec)
         PropEd.CommitChanges("Process Conditions")
 
+        # Set flow rate of process
+        if "flow_rate" in props.keys():
+            PropEd = Synergy.PropertyEditor
+            Prop = PropEd.FindProperty(30011, 1)
+            DVec = Synergy.CreateDoubleArray
+            DVec.AddDouble(3)
+            Prop.FieldValues(10109, DVec)
+            DVec = Synergy.CreateDoubleArray
+            DVec.AddDouble(props["flow_rate"])
+            Prop.FieldValues(10107, DVec)
+            PropEd.CommitChanges("Process Conditions")
+
+        # Set mold temperature
+        if "mold_temp" in props.keys():
+            PropEd = Synergy.PropertyEditor
+            Prop = PropEd.FindProperty(30011, 1)
+            DVec = Synergy.CreateDoubleArray
+            DVec.AddDouble(props["mold_temp"])
+            Prop.FieldValues(11108, DVec)
+            PropEd.CommitChanges("Process Conditions")
+
+        # Set melt temperature
+        if "melt_temp" in props.keys():
+            PropEd = Synergy.PropertyEditor
+            Prop = PropEd.FindProperty(30011, 1)
+            DVec = Synergy.CreateDoubleArray
+            DVec.AddDouble(props["melt_temp"])
+            Prop.FieldValues(11002, DVec)
+            PropEd.CommitChanges("Process Conditions")
+
         # Save the sdy files
         StudyDoc = Synergy.StudyDoc
         StudyDoc.Save
@@ -102,7 +132,7 @@ for name, props in config.items():
 
         # Run the simulation
         p = subprocess.Popen(
-            [os.path.join(MF, "runstudy.exe"), study_name + ".sdy",],
+            [os.path.join(MF, "runstudy.exe"), study_name + ".sdy"],
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
             cwd=path,
@@ -113,7 +143,7 @@ for name, props in config.items():
 
         for key, value in OUT.items():
             p = subprocess.Popen(
-                [os.path.join(MF, "studyrlt.exe"), study_name + ".sdy", "-xml", key,],
+                [os.path.join(MF, "studyrlt.exe"), study_name + ".sdy", "-xml", key],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
                 cwd=path,

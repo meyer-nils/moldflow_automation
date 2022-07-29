@@ -17,6 +17,9 @@ Define models in the models.yaml file:
 ```
 <model_name>:
   thickness: <plate thickness>
+  flow_rate: <flow rate at injection point>
+  mold_temp: <mold temperature>
+  melt_temp: <polymer temperature>
   plate: [<length>, <width>]
   holes:
     - [<pos_x>, <pos_y>, <radius>]
