@@ -82,26 +82,25 @@ for name, props in config.items():
         MeshGenerator.EdgeLength = 2.5
         MeshGenerator.Generate
 
-        # Set number of intermediate results
+        # Set solver parameters
         PropEd = Synergy.PropertyEditor
         Prop = PropEd.FindProperty(10080, 1)
+        # Set number of intermediate results to 100
         DVec = Synergy.CreateDoubleArray
         DVec.AddDouble(100)
         Prop.FieldValues(910, DVec)
         PropEd.CommitChanges("Process Conditions")
-
-        # Set maximum filled volume per step
-        PropEd = Synergy.PropertyEditor
-        Prop = PropEd.FindProperty(10080, 1)
+        # Set maximum filled volume per step to 1%
         DVec = Synergy.CreateDoubleArray
         DVec.AddDouble(1)
         Prop.FieldValues(51010, DVec)
         PropEd.CommitChanges("Process Conditions")
 
+        # Set process parameters
+        PropEd = Synergy.PropertyEditor
+        Prop = PropEd.FindProperty(30011, 1)
         # Set flow rate of process
         if "flow_rate" in props.keys():
-            PropEd = Synergy.PropertyEditor
-            Prop = PropEd.FindProperty(30011, 1)
             DVec = Synergy.CreateDoubleArray
             DVec.AddDouble(3)
             Prop.FieldValues(10109, DVec)
@@ -109,20 +108,14 @@ for name, props in config.items():
             DVec.AddDouble(props["flow_rate"])
             Prop.FieldValues(10107, DVec)
             PropEd.CommitChanges("Process Conditions")
-
         # Set mold temperature
         if "mold_temp" in props.keys():
-            PropEd = Synergy.PropertyEditor
-            Prop = PropEd.FindProperty(30011, 1)
             DVec = Synergy.CreateDoubleArray
             DVec.AddDouble(props["mold_temp"])
             Prop.FieldValues(11108, DVec)
             PropEd.CommitChanges("Process Conditions")
-
         # Set melt temperature
         if "melt_temp" in props.keys():
-            PropEd = Synergy.PropertyEditor
-            Prop = PropEd.FindProperty(30011, 1)
             DVec = Synergy.CreateDoubleArray
             DVec.AddDouble(props["melt_temp"])
             Prop.FieldValues(11002, DVec)
