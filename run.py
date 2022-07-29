@@ -90,6 +90,14 @@ for name, props in config.items():
         Prop.FieldValues(910, DVec)
         PropEd.CommitChanges("Process Conditions")
 
+        # Set maximum filled volume per step
+        PropEd = Synergy.PropertyEditor
+        Prop = PropEd.FindProperty(10080, 1)
+        DVec = Synergy.CreateDoubleArray
+        DVec.AddDouble(1)
+        Prop.FieldValues(51010, DVec)
+        PropEd.CommitChanges("Process Conditions")
+
         # Set flow rate of process
         if "flow_rate" in props.keys():
             PropEd = Synergy.PropertyEditor
