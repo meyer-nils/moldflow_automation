@@ -1,20 +1,20 @@
-# plate_1:
-#   thickness: 3.0
-#   flow_rate: 1000.0
-#   mold_temp: 60.0
-#   melt_temp: 230.0
-#   plate: [100.0, 100.0]
-#   holes:
-#     - [10.0, 50.0, 5.0]
-#     - [50.0, 20.0, 5.0]
-#   injection_locations:
-#     - [[50.0, 50.0, 0.0],[0.0, 0.0, 1.0]]
-#     - [[80.0, 80.0, 0.0],[0.0, 0.0, 1.0]]
+plate_1:
+  thickness: 3.0
+  flow_rate: 10.0
+  mold_temp: 60.0
+  melt_temp: 230.0
+  plate: [100.0, 100.0]
+  holes:
+    - [10.0, 50.0, 5.0]
+    - [50.0, 20.0, 5.0]
+  injection_locations:
+    - [[50.0, 50.0, 0.0],[0.0, 0.0, 1.0]]
+    - [[80.0, 80.0, 0.0],[0.0, 0.0, 1.0]]
 
 
 plate_2:
   thickness: 3.0
-  flow_rate: 1000.0
+  flow_rate: 5.0
   mold_temp: 40.0
   melt_temp: 210.0
   plate: [50.0, 100.0]

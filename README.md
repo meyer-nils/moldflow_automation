@@ -44,8 +44,9 @@ This generates a directory for each model named *model* in the *data* directory.
 - *model*\_*X*\_*Y*\_study.sdy: Moldflow study file setting up the simulation case.
 - *model*\_*X*\_*Y*\_study.of1: Binary filling results except weld lines and air traps.
 - *model*\_*X*\_*Y*\_study.of2: Binary weld lines and air trap results.
-- *model*\_*X*\_*Y*\_study_fill_time.xml: Fill time of each node.
-- *model*\_*X*\_*Y*\_study_weld_surface.xml: Nodes of the weld surface.
-- *model*\_*X*\_*Y*\_study_weld_line.xml: Nodes of the weld line.
+- *model*\_*X*\_*Y*\_study_temperature.xml: Temperature fields
+- *model*\_*X*\_*Y*\_study_pressure.xml: Pressure fields
+- *model*\_*X*\_*Y*\_study_velocity.xml: Velocity fields
+
 
 for each pair of injection locations (*X*, *Y*).
