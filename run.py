@@ -14,7 +14,7 @@ import yaml
 import geometry
 
 # Load the configuration file
-yaml_file = open("models.yaml", "r")
+yaml_file = open("random_models.yaml", "r")
 config = yaml.safe_load(yaml_file)
 
 # Path to Autodesk Moldflow
@@ -22,9 +22,13 @@ MF = os.path.join("C:/", "Program Files", "Autodesk", "Moldflow Insight 2021.1",
 
 # Define outputs
 OUT = {
-    "1540": "temperature",
-    "1180": "pressure",
-    "1750": "velocity",
+    # "1540": "temperature",
+    # "1180": "pressure",
+    "1610": "filltime",
+    # "1750": "velocity",
+    # "1030": "ori_core",
+    #"1040": "ori_skin",
+    "4010": "orientation",
 }
 
 for name, props in config.items():
@@ -33,6 +37,9 @@ for name, props in config.items():
 
     # Create workdir
     path = os.path.abspath(os.path.join("data", name))
+    if os.path.exists(path):
+        print(f"Plate {name} already exists.")
+        continue
     os.mkdir(path)
 
     # Build geometry
@@ -58,7 +65,7 @@ for name, props in config.items():
         print(f" - Injection location {location}...")
         # Import stl file
         ImpOpts = Synergy.ImportOptions
-        ImpOpts.MeshType = "3D"
+        ImpOpts.MeshType = "Midplane" # "3D" or "Midplane"
         ImpOpts.Units = "mm"
         Synergy.ImportFile(f"{name}.stl", ImpOpts, False)
 
@@ -81,6 +88,10 @@ for name, props in config.items():
         MeshGenerator = Synergy.MeshGenerator
         MeshGenerator.EdgeLength = 2.5
         MeshGenerator.Generate
+
+        # Set material
+        MatSelector = Synergy.MaterialSelector
+        MatSelector.Select("Celanese.21000.udb", "System", 10994, 0)
 
         # Set solver parameters
         PropEd = Synergy.PropertyEditor

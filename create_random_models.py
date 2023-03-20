@@ -3,20 +3,20 @@ import numpy as np
 import yaml
 
 # Number of models
-N = 10
+N = 50
 # Number of injection locations per model
-M = 5
+M = 10
 
 # Create uniformly distributed random data
 x_plate = np.random.randint(20, 100, N)
 y_plate = np.random.randint(20, 100, N)
 # n_hole = np.random.randint(0, 3, N)
 n_hole = np.ones_like(x_plate)
-flow_rate = np.random.randint(1, 100, N)
+thickness = np.random.randint(1, 10, N)
 
 models = {}
 
-for i, (x, y, n, fr) in enumerate(zip(x_plate, y_plate, n_hole, flow_rate)):
+for i, (x, y, n, t) in enumerate(zip(x_plate, y_plate, n_hole, thickness)):
     # Holes should be in the plates
     x_holes = np.random.randint(9, x - 9, n)
     y_holes = np.random.randint(9, y - 9, n)
@@ -36,8 +36,8 @@ for i, (x, y, n, fr) in enumerate(zip(x_plate, y_plate, n_hole, flow_rate)):
 
     # build dictionary for YAML
     models[f"plate_{i}"] = {
-        "thickness": 3.0,
-        "flow_rate": float(fr),
+        "thickness": float(t),
+        "flow_rate": 10.0,
         "plate": [float(x), float(y)],
         "holes": holes,
         "injection_locations": injections,
