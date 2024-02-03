@@ -3,22 +3,22 @@
 There is a 'models.yaml' configuration file to define models. These are created and
 mold filling simulations are performed.
 """
+
 import os
 import subprocess
 
+import geometry
 import madcad
 import pythoncom
 import win32com.client
 import yaml
-
-import geometry
 
 # Load the configuration file
 yaml_file = open("random_models.yaml", "r")
 config = yaml.safe_load(yaml_file)
 
 # Path to Autodesk Moldflow
-MF = os.path.join("C:/", "Program Files", "Autodesk", "Moldflow Insight 2021.1", "bin")
+MF = "C:/Program Files/Autodesk/Moldflow Insight 2023/bin"
 
 # Define outputs
 OUT = {
@@ -27,7 +27,7 @@ OUT = {
     "1610": "filltime",
     # "1750": "velocity",
     # "1030": "ori_core",
-    #"1040": "ori_skin",
+    # "1040": "ori_skin",
     "4010": "orientation",
 }
 
@@ -65,7 +65,7 @@ for name, props in config.items():
         print(f" - Injection location {location}...")
         # Import stl file
         ImpOpts = Synergy.ImportOptions
-        ImpOpts.MeshType = "Midplane" # "3D" or "Midplane"
+        ImpOpts.MeshType = "Midplane"  # "3D" or "Midplane"
         ImpOpts.Units = "mm"
         Synergy.ImportFile(f"{name}.stl", ImpOpts, False)
 
