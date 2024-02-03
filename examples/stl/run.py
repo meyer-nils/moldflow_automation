@@ -5,10 +5,14 @@ import pythoncom
 import win32com.client
 
 MOLDFLOW_PATH = "C:/Program Files/Autodesk/Moldflow Insight 2023/bin"
+PATH = "C:/<your>/<path>/Disk"
 
 # Connect to Moldflow Synergy
 Synergy = win32com.client.Dispatch("synergy.Synergy")
 Synergy.SetUnits("Metric")
+
+# Set up project 
+Synergy.NewProject("Disk", "C:/<your>/<path>/Disk")
 
 # Import stl file
 ImpOpts = Synergy.ImportOptions
