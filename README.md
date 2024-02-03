@@ -7,5 +7,3 @@ Autodesk Moldflow is a popular injection molding software. The Autodesk Moldflow
 
 ## Examples 
 The `examples` directory contains a couple of examples, how we can integrate Autodesk Moldflow in a Python workflow.
-
-## Acknowledgments 
