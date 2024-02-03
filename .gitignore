@@ -1,6 +1,9 @@
 # Data files
 data
 
+# VS Code 
+.vscode
+
 # Python
 *.pyc
 __pycache__

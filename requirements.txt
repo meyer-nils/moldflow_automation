@@ -1,3 +1,0 @@
-pymadcad
-numpy-stl
-pyyaml
