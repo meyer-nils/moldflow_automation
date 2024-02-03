@@ -11,14 +11,14 @@ PATH = "C:/<your>/<path>/Disk"
 Synergy = win32com.client.Dispatch("synergy.Synergy")
 Synergy.SetUnits("Metric")
 
-# Set up project 
-Synergy.NewProject("Disk", "C:/<your>/<path>/Disk")
+# Set up project
+Synergy.NewProject("Disk", PATH)
 
 # Import stl file
 ImpOpts = Synergy.ImportOptions
 ImpOpts.MeshType = "3D"
 ImpOpts.Units = "mm"
-Synergy.ImportFile("disk.stl", ImpOpts, False)
+Synergy.ImportFile("C:\\<your>\\<path>\\examples\\stl\\disk.stl", ImpOpts, False)
 
 # Set injection location
 BoundaryConditions = Synergy.BoundaryConditions
@@ -41,10 +41,10 @@ StudyDoc.Save
 
 # Run the simulation
 p = subprocess.Popen(
-    [os.path.join(MOLDFLOW_PATH, "runstudy.exe"), "disk_study.sdy"],
+    [os.path.join(MOLDFLOW_PATH, "runstudy.exe"), os.path.join(PATH, "disk_study.sdy")],
     stdout=subprocess.PIPE,
     stderr=subprocess.STDOUT,
 )
 (output, err) = p.communicate()
-with open("disk_study.log", "w") as file:
+with open(os.path.join(PATH, "disk_study.log"), "w") as file:
     file.write(output.decode("windows-1252").strip())
