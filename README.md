@@ -1,6 +1,8 @@
 # Moldflow automation
 
-Can we automate Autodesk Moldflow with Python? It turns out, we can! 
+## 🚀 Important news
+Autodesk now provides an official Python package for the Moldflow API, available directly on GitHub (https://github.com/Autodesk/moldflow-api).
+For Moldflow 2026.0.1 and newer, we highly recommend using Autodesk’s native Python interface instead of this repository.
 
 ## Tutorial
 Autodesk Moldflow is a popular injection molding software. The Autodesk Moldflow Synergy GUI is able to record user macros for automation as Visual Basic Scripts (*.vbs). However, we may want to integrate this automation with a Python workflow. We could start subprocesses to call Moldflow with a *.vbs script, but it is a much more seamless experience to control Moldflow directly from Python. Luckily, that is possible and the Jupyter notebook `tutorial.ipynb` illustrates how it is done. 

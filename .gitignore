@@ -7,3 +7,6 @@ data
 # Python
 *.pyc
 __pycache__
+
+# Mac OS
+.DS_Store
